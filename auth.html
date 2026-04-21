@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexya Clothing | Authentication</title>
+    <meta name="description" content="Login or Sign up to Nexya Clothing.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">NEXYA<span>.</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> (<span class="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-box">
+            <div class="auth-tabs">
+                <div class="auth-tab active" data-target="loginMenu">Login</div>
+                <div class="auth-tab" data-target="signupMenu">Sign up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginMenu" class="auth-form active" action="#">
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <div style="text-align: right; margin-bottom: 1.5rem;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--text-light);">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary full-width-btn">Login</button>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form id="signupMenu" class="auth-form" action="#">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupAddress">Delivery Address</label>
+                    <textarea id="signupAddress" class="form-control" rows="3" placeholder="Enter your full delivery address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="btn btn-primary full-width-btn">Sign Up</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

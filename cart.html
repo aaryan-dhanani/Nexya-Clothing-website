@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexya Clothing | Cart</title>
+    <meta name="description" content="View your cart.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">NEXYA<span>.</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>git
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart (<span class="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn btn-primary">Login / Sign Up</a>
+        </div>
+    </header>
+
+    <main class="section-padding">
+        <h1 class="section-title">Your Cart</h1>
+        <div class="cart-container" style="max-width: 900px; margin: 0 auto; min-height: 40vh;">
+            <div id="cart-items" style="margin-bottom: 2rem;">
+                <!-- Cart items will be loaded here via JS -->
+            </div>
+            
+            <div id="cart-summary" style="display:none; text-align: right; border-top: 2px solid var(--border-color); padding-top: 1.5rem;">
+                <h3>Total: ₹<span id="cart-total">0.00</span></h3>
+                <button class="btn btn-primary" style="margin-top: 1rem; padding: 1rem 3rem;" onclick="checkout()">Checkout</button>
+            </div>
+            
+            <div id="empty-cart-msg" style="text-align: center; color: var(--text-light); padding: 3rem 0;">
+                <i class="fas fa-shopping-basket" style="font-size: 3rem; margin-bottom: 1rem; color: #ddd;"></i>
+                <h2>Your cart is empty</h2>
+                <a href="shop.html" class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">Continue Shopping</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color:white; margin-bottom: 1rem;">NEXYA<span>.</span></div>
+                <p>Redefining modern fashion with premium materials and sustainable practices.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, NY</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                <p><i class="fas fa-envelope"></i> hello@nexyaclothing.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nexya Clothing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

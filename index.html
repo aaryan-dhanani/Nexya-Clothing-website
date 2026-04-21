@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexya Clothing | Home</title>
+    <meta name="description" content="Welcome to Nexya Clothing. Discover our premium collection of modern fashion.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">NEXYA<span>.</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> (<span class="cart-count">0</span>)</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn btn-primary">Login / Sign Up</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Elevate Your Style</h1>
+                <p>Discover the latest trends in modern fashion. Premium quality materials crafted for your everyday
+                    comfort and elegance.</p>
+                <a href="shop.html" class="btn btn-primary">Shop Collection</a>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <h2 class="section-title">New Arrivals</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000"
+                            alt="Elegant Dress">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Elegant Evening Dress</h3>
+                        <div class="product-price">₹9999.00</div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.5rem;"
+                            onclick="addToCart('Elegant Evening Dress', 9999.00, 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=1000"
+                            alt="Casual Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Urban Denim Jacket</h3>
+                        <div class="product-price">₹6999.00</div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.5rem;"
+                            onclick="addToCart('Urban Denim Jacket', 6999.00, 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=1000')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=1000"
+                            alt="Classic Leather Jacket">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Classic Leather Jacket</h3>
+                        <div class="product-price">₹8999.00</div>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem; padding: 0.5rem;"
+                            onclick="addToCart('Classic Leather Jacket', 8999.00, 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&q=80&w=1000')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="shop.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color:white; margin-bottom: 1rem;">NEXYA<span>.</span></div>
+                <p>Redefining modern fashion with premium materials and sustainable practices.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, NY</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
+                <p><i class="fas fa-envelope"></i> hello@nexyaclothing.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nexya Clothing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

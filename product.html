@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexya Clothing | Product Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .product-detail-img img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-detail-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .product-detail-price {
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .product-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Modal styling */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .modal-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">NEXYA<span>.</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> (<span class="cart-count">0</span>)</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <a href="auth.html" class="btn btn-primary">Login / Sign Up</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="product-detail-container">
+            <div class="product-detail-img">
+                <img id="pd-img" src="" alt="Product Image">
+            </div>
+            <div class="product-detail-info">
+                <h1 id="pd-title">Loading...</h1>
+                <div class="product-detail-price" id="pd-price">₹0.00</div>
+                <p class="product-desc">
+                    Experience unparalleled comfort and style with this premium piece from Nexya Clothing. Meticulously crafted using high-quality materials, ensuring longevity and a perfect fit for any occasion.
+                </p>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <strong>Size:</strong>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                        <button style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: #fff; cursor: pointer;">S</button>
+                        <button style="padding: 0.5rem 1rem; border: 1px solid #333; background: #333; color: #fff; cursor: pointer;">M</button>
+                        <button style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: #fff; cursor: pointer;">L</button>
+                        <button style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: #fff; cursor: pointer;">XL</button>
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <button class="btn btn-primary" id="btn-add-cart" style="flex: 1;"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="btn btn-primary" id="btn-buy-now" style="flex: 1; background-color: var(--accent); border-color: var(--accent);">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Buy Now Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModal">&times;</span>
+            <h2 class="modal-title">Complete Your Purchase</h2>
+            <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                <img id="modal-img" src="" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                <div>
+                    <h4 id="modal-title" style="margin-bottom: 5px;">Product</h4>
+                    <div style="color: var(--accent); font-weight: bold;" id="modal-price">₹0</div>
+                </div>
+            </div>
+            
+            <form id="expressCheckoutForm">
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Full Name</label>
+                    <input type="text" id="checkoutName" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; margin-top: 0.5rem;">
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Delivery Address</label>
+                    <textarea id="checkoutAddress" required rows="3" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; margin-top: 0.5rem;"></textarea>
+                </div>
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label>Phone Number</label>
+                    <input type="tel" id="checkoutPhone" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; margin-top: 0.5rem;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm & Pay <span id="modal-pay-amount"></span></button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="color:white; margin-bottom: 1rem;">NEXYA<span>.</span></div>
+                <p>Redefining modern fashion with premium materials and sustainable practices.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nexya Clothing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const title = urlParams.get('title') || 'Premium Item';
+            const priceText = urlParams.get('price') || '₹0.00';
+            const imgPath = urlParams.get('img') || 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000';
+
+            // Populate page
+            document.getElementById('pd-title').textContent = title;
+            document.getElementById('pd-price').textContent = priceText;
+            document.getElementById('pd-img').src = imgPath;
+
+            // Raw price number
+            const rawPrice = parseFloat(priceText.replace(/[^0-9.]/g, ''));
+
+            // Add to Cart
+            document.getElementById('btn-add-cart').addEventListener('click', () => {
+                addToCart(title, rawPrice, imgPath);
+            });
+
+            // Modal Logic
+            const modal = document.getElementById('checkoutModal');
+            const btnBuyNow = document.getElementById('btn-buy-now');
+            const btnClose = document.getElementById('closeModal');
+
+            btnBuyNow.addEventListener('click', () => {
+                // Populate Modal details
+                document.getElementById('modal-img').src = imgPath;
+                document.getElementById('modal-title').textContent = title;
+                document.getElementById('modal-price').textContent = priceText;
+                document.getElementById('modal-pay-amount').textContent = priceText;
+                
+                // Pre-fill user data if available
+                const userName = localStorage.getItem('nexyaUserName');
+                const userAddress = localStorage.getItem('nexyaUserAddress');
+                if (userName) document.getElementById('checkoutName').value = userName;
+                if (userAddress) document.getElementById('checkoutAddress').value = userAddress;
+
+                modal.style.display = 'flex';
+            });
+
+            btnClose.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            document.getElementById('expressCheckoutForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('checkoutName').value;
+                const address = document.getElementById('checkoutAddress').value;
+                const phone = document.getElementById('checkoutPhone').value;
+                
+                const submitBtn = e.target.querySelector('button');
+                const originalText = submitBtn.innerText;
+                submitBtn.innerText = "Processing...";
+                submitBtn.disabled = true;
+
+                if (typeof SCRIPT_URL === 'undefined' || SCRIPT_URL.includes('YOUR_GOOGLE')) {
+                    alert(`Order confirmed! Thank you for purchasing ${title}. Your item will be shipped to the provided address.`);
+                    modal.style.display = 'none';
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                try {
+                    const res = await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            action: 'order',
+                            userName: name,
+                            userEmail: localStorage.getItem('nexyaUserEmail') || "Guest",
+                            address: address,
+                            phone: phone,
+                            items: JSON.stringify(["1x " + title]),
+                            total: rawPrice
+                        }),
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                    });
+                    
+                    const result = await res.json();
+                    if(result.success) {
+                        alert(`Order confirmed! ${result.message}\nOrder ID: ${result.orderId}`);
+                        modal.style.display = 'none';
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Failed to place order: ' + result.message);
+                        submitBtn.innerText = originalText;
+                        submitBtn.disabled = false;
+                    }
+                } catch(err) {
+                    alert('Error placing order to database.');
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
